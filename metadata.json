@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "name": "Bazer Artery",
+  "symbol": "BARTR",
+  "website": "https://bazerwallet.com",
+  "logo": {
+    "url": "https://raw.githubusercontent.com/BazerDevGit/lstb-metadata/a812d8fc1bd6ec46e2a964dfee5ee2670d6ff27f/Frame%2015.png"
+  },
+  "description": {
+    "format": "markdown",
+    "image_url": "https://raw.githubusercontent.com/BazerDevGit/lstb-metadata/a812d8fc1bd6ec46e2a964dfee5ee2670d6ff27f/Frame%2015.png",
+    "video_url": null,
+    "content": [
+      {
+        "language": "en",
+        "text": "🔥 BARTR — MLM Cross-Chain Liquid Staking Token\n\n- *100% backed*: by ARTR staked in Artery validator\n- *Daily rewards*: automatically accrued in BARTR\n- *Redeem*: burn BARTR to receive ARTR (minus unbonding costs)\n- *MLM rewards*: 15% distributed via Axiome referral structure\n- *Available*: on swap\n\n💱 Initial price:\n1 BARTR = 1 ARTR\n\nA token backed by real validator yield on another blockchain."
+      },
+      {
+        "language": "ru",
+        "text": "🔥 BARTR — MLM кроссчейн liquid staking токен\n\n- *100% обеспечен*: ARTR в стейке валидатора Artery\n- *Ежедневные реварды*: начисляются в BARTR\n- *Redeem*: сжигание BARTR для получения ARTR (за вычетом анбонда)\n- *MLM награды*: 15% распределяется через структуру Axiome\n- *Доступен*: на свапе\n\n💱 Стартовая цена:\n1 BARTR = 1 ARTR\n\nТокен обеспечен реальной доходностью валидатора в другом блокчейне."
+      },
+      {
+        "language": "de",
+        "text": "🔥 BARTR — MLM Cross-Chain Liquid Staking Token\n\n- *100% gedeckt*: durch gestaktes ARTR im Artery Validator\n- *Tägliche Belohnungen*: werden in BARTR gutgeschrieben\n- *Redeem*: BARTR verbrennen, um ARTR zu erhalten (abzüglich Unbonding-Kosten)\n- *MLM-Belohnungen*: 15% werden über die Axiome-Struktur verteilt\n- *Verfügbar*: im Swap\n\n💱 Startpreis:\n1 BARTR = 1 ARTR\n\nEin Token basierend auf realen Validator-Erträgen."
+      },
+      {
+        "language": "tr",
+        "text": "🔥 BARTR — MLM Cross-Chain Liquid Staking Token\n\n- *%100 destekli*: Artery validatoründe stake edilen ARTR ile\n- *Günlük ödüller*: BARTR olarak birikir\n- *Redeem*: BARTR yakarak ARTR alınır (unbonding maliyetleri düşülerek)\n- *MLM ödülleri*: %15 Axiome sistemi üzerinden dağıtılır\n- *Kullanılabilir*: swap üzerinde\n\n💱 Başlangıç fiyatı:\n1 BARTR = 1 ARTR\n\nGerçek validator getirisine dayalı bir token."
+      }
+    ]
+  },
+  "socials": {
+    "Telegram": "https://t.me/Bazer_stake_bot"
+    "BARTR-DISTRIBUTOR": "https://axiomechain.org/contract/axm1xcw72vdrmd76d3krjfwgc2pcx5z9ccywmnkdzxajfclav8lhvytq45n7dl"
+  },
+  "legal": null,
+  "audit": null,
+  "contacts": null
+}
