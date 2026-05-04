@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Как получить награды BARTR</title>
+  <title>BARTR Rewards</title>
 
   <style>
     :root {
@@ -28,392 +28,155 @@
         radial-gradient(circle at bottom right, rgba(69,214,163,.18), transparent 28%),
         var(--bg);
       color: var(--text);
-      line-height: 1.6;
     }
 
     .wrap {
-      width: min(920px, 100%);
-      margin: 0 auto;
-      padding: 32px 16px;
-    }
-
-    .hero {
-      padding: 34px 24px;
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      background: rgba(18, 26, 51, .82);
-      box-shadow: 0 22px 70px rgba(0,0,0,.28);
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(122,162,255,.16);
-      color: #dbe5ff;
-      font-size: 14px;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1.08;
-    }
-
-    h2 {
-      margin: 0 0 14px;
-      font-size: 24px;
-    }
-
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 720px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      margin-top: 22px;
+      width: min(900px, 100%);
+      margin: auto;
+      padding: 30px 16px;
     }
 
     .card {
       padding: 22px;
       border: 1px solid var(--border);
-      border-radius: 24px;
-      background: rgba(18, 26, 51, .74);
+      border-radius: 20px;
+      background: rgba(18,26,51,.8);
+      margin-bottom: 16px;
     }
 
-    ol, ul {
-      margin: 0;
-      padding-left: 22px;
-    }
-
-    li { margin: 8px 0; }
-
-    .sign-box {
-      margin-top: 14px;
-      padding: 14px;
-      border: 1px dashed rgba(122,162,255,.45);
-      border-radius: 18px;
-      background: rgba(0,0,0,.22);
-      word-break: break-all;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 13px;
-      color: #dbe5ff;
-    }
-
-    .btn-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
-    }
-
-    button {
-      border: 0;
-      border-radius: 16px;
-      padding: 12px 16px;
-      cursor: pointer;
-      font-weight: 700;
-      color: #081021;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-    }
+    h1 { margin: 0 0 10px; }
+    h2 { margin: 0 0 10px; }
 
     input {
       width: 100%;
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      outline: none;
-      color: var(--text);
-      background: rgba(0,0,0,.22);
-      font-size: 15px;
-    }
-
-    input::placeholder { color: var(--muted); }
-
-    .qr-wrap {
-      margin-top: 18px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .qr-img {
-      width: min(260px, 100%);
       padding: 12px;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 18px 45px rgba(0,0,0,.28);
-    }
-
-    .note {
-      color: var(--muted);
-      font-size: 14px;
+      border-radius: 12px;
+      border: none;
       margin-top: 10px;
     }
 
-    .success {
-      color: var(--success);
-      font-weight: 700;
-    }
-
-    .error {
-      color: var(--danger);
-      font-weight: 700;
-    }
-
-    .result-box {
-      margin-top: 14px;
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(0,0,0,.22);
-      border: 1px solid var(--border);
-      min-height: 56px;
-      word-break: break-word;
+    button {
+      margin-top: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #000;
     }
 
     .amount {
-      font-size: 28px;
-      font-weight: 800;
+      font-size: 26px;
+      font-weight: bold;
       color: var(--success);
     }
 
-    pre {
-      white-space: pre-wrap;
-      word-break: break-word;
-      color: var(--muted);
+    .result {
+      margin-top: 10px;
     }
 
-    footer {
-      margin-top: 22px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
+    .qr {
+      width: 220px;
+      display: block;
+      margin: 20px auto;
+      background: #fff;
+      padding: 10px;
+      border-radius: 16px;
+    }
+
+    .sign {
+      font-size: 12px;
+      word-break: break-all;
+      background: rgba(0,0,0,.3);
+      padding: 10px;
+      border-radius: 10px;
     }
   </style>
 </head>
 
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <div class="badge">BARTR Rewards</div>
-      <h1>Как получить награды BARTR</h1>
-      <p class="lead">
-        Здесь можно проверить начисления BARTR и забрать награду через Axiome Wallet.
-      </p>
-    </section>
 
-    <section class="grid">
-      <div class="card">
-        <h2>Проверить начисления BARTR</h2>
+<div class="wrap">
 
-        <p class="note">
-          Введите свой AXM-адрес, чтобы посмотреть доступные начисления.
-        </p>
+  <div class="card">
+    <h1>💰 BARTR награды</h1>
+    <p>Проверь начисления и забери награду</p>
+  </div>
 
-        <input
-          id="address"
-          placeholder="Например: axm153wetpldgkglhqnuuur0peexg5pg0fvm0jfk3v"
-        />
+  <div class="card">
+    <h2>Проверить начисления</h2>
 
-        <div class="btn-row">
-          <button onclick="checkIncome()">Проверить начисления</button>
-        </div>
+    <input id="address" placeholder="axm..." />
+    <button onclick="checkIncome()">Проверить</button>
 
-        <div class="result-box" id="result">
-          Результат появится здесь.
-        </div>
-      </div>
+    <div id="result" class="result"></div>
+  </div>
 
-      <div class="card">
-        <h2>Способ 1: через строку подписи</h2>
+  <div class="card">
+    <h2>QR Claim</h2>
+    <img src="claim.jpg" class="qr" />
+  </div>
 
-        <ol>
-          <li>Откройте приложение <b>Axiome Wallet</b>.</li>
-          <li>Перейдите в раздел <b>Axiome Connect</b>.</li>
-          <li>Вставьте строку подписи в поле ввода.</li>
-          <li>Подтвердите транзакцию.</li>
-        </ol>
+  <div class="card">
+    <h2>Строка Claim</h2>
 
-        <div class="sign-box" id="signText">axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImNvbnRyYWN0X2FkZHIiOiJheG0xeGN3NzJ2ZHJtZDc2ZDNrcmpmd2djMnBjeDV6OWNjeXdtbmtkenhhamZjbGF2OGxodnl0cTQ1bjdkbCIsImZ1bmRzIjpbXSwibXNnIjp7ImNsYWltIjp7fX0sIm1lbW8iOiJjbGFpbSBCQVJUUiBmcm9tIGRpc3RyaWJ1dG9yIn0=</div>
+    <div id="signText" class="sign">
+axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImNvbnRyYWN0X2FkZHIiOiJheG0xeGN3NzJ2ZHJtZDc2ZDNrcmpmd2djMnBjeDV6OWNjeXdtbmtkenhhamZjbGF2OGxodnl0cTQ1bjdkbCIsImZ1bmRzIjpbXSwibXNnIjp7ImNsYWltIjp7fX0sIm1lbW8iOiJjbGFpbSBCQVJUUiBmcm9tIGRpc3RyaWJ1dG9yIn0=
+    </div>
 
-        <div class="btn-row">
-          <button onclick="copySign()">Скопировать строку</button>
-        </div>
+    <button onclick="copySign()">Скопировать</button>
+  </div>
 
-        <div class="note" id="copyStatus"></div>
-      </div>
+</div>
 
-      <div class="card">
-        <h2>Способ 2: через QR-код</h2>
+<script>
+const PROXY_URL = "https://lucky-morning-47de.bazer-postman.workers.dev/";
 
-        <ol>
-          <li>Откройте <b>Axiome Wallet</b>.</li>
-          <li>Перейдите в <b>Axiome Connect</b>.</li>
-          <li>Отсканируйте QR-код ниже.</li>
-          <li>Подтвердите транзакцию.</li>
-        </ol>
+function formatAmount(v) {
+  if (!v) return "0";
+  return (Number(v) / 1e6).toFixed(6).replace(/\.?0+$/, "");
+}
 
-        <div class="qr-wrap">
-          <img class="qr-img" src="claim.jpg" alt="QR-код для получения награды BARTR" />
-        </div>
+async function copySign() {
+  const text = document.getElementById("signText").innerText.trim();
+  await navigator.clipboard.writeText(text);
+  alert("Скопировано");
+}
 
-        <p class="note">
-          Важно: файл картинки должен лежать рядом с этим HTML и называться <b>claim.jpg</b>.
-        </p>
-      </div>
+async function checkIncome() {
+  const address = document.getElementById("address").value.trim();
+  const result = document.getElementById("result");
 
-      <div class="card">
-        <h2>Важно</h2>
-
-        <ul>
-          <li>Для комиссии нужен небольшой баланс AXM.</li>
-          <li>Награда приходит после подтверждения транзакции.</li>
-          <li>Если награда не пришла, проверьте, есть ли у вас доступные начисления.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Что происходит при подтверждении?</h2>
-
-        <p>
-          Вы отправляете транзакцию <b>claim</b> в смарт-контракт распределения BARTR.
-          Контракт проверяет вашу доступную награду и отправляет токены на ваш адрес.
-        </p>
-
-        <p class="success">
-          После успешного подтверждения BARTR будет зачислен на ваш кошелёк.
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      BARTR Claim Guide · Axiome Wallet
-    </footer>
-  </main>
-
-  <script>
-    const PROXY_URL = "https://lucky-morning-47de.bazer-postman.workers.dev/";
-
-    function formatAmount(rawAmount, decimals = 6) {
-      if (rawAmount === undefined || rawAmount === null || rawAmount === "") return "0";
-
-      const value = BigInt(String(rawAmount));
-      const divider = 10n ** BigInt(decimals);
-
-      const whole = value / divider;
-      const fraction = value % divider;
-
-      const fractionText = fraction
-        .toString()
-        .padStart(decimals, "0")
-        .replace(/0+$/, "");
-
-      return fractionText ? `${whole}.${fractionText}` : whole.toString();
-    }
-
-    function findAmount(obj) {
-      if (!obj || typeof obj !== "object") return null;
-
-      const data = obj.data || obj;
-
-      return (
-        data.amount ??
-        data.income ??
-        data.reward ??
-        data.pending ??
-        data.claimable ??
-        data.balance ??
-        null
-      );
-    }
-
-    async function copySign() {
-      const text = document.getElementById("signText").innerText.trim();
-      const status = document.getElementById("copyStatus");
-
-      try {
-        await navigator.clipboard.writeText(text);
-        status.textContent = "Строка скопирована.";
-        status.className = "note success";
-      } catch (e) {
-        status.textContent = "Не удалось скопировать автоматически. Выделите строку вручную.";
-        status.className = "note error";
-      }
-    }
-
-    <script>
-  const PROXY_URL = "https://lucky-morning-47de.bazer-postman.workers.dev/";
-
-  function formatAmount(rawAmount, decimals = 6) {
-    if (!rawAmount) return "0";
-
-    const value = BigInt(String(rawAmount));
-    const divider = 10n ** BigInt(decimals);
-
-    const whole = value / divider;
-    const fraction = value % divider;
-
-    const fractionText = fraction
-      .toString()
-      .padStart(decimals, "0")
-      .replace(/0+$/, "");
-
-    return fractionText ? `${whole}.${fractionText}` : whole.toString();
+  if (!address) {
+    result.innerHTML = "Введите адрес";
+    return;
   }
 
-  async function checkIncome() {
-    const address = document.getElementById("address").value.trim();
-    const result = document.getElementById("result");
+  result.innerHTML = "Загрузка...";
 
-    if (!address) {
-      result.innerHTML = '<span class="error">Введите AXM-адрес.</span>';
-      return;
-    }
+  try {
+    const res = await fetch(PROXY_URL + "?address=" + address);
+    const data = await res.json();
 
-    if (!address.startsWith("axm")) {
-      result.innerHTML = '<span class="error">Адрес должен начинаться с axm.</span>';
-      return;
-    }
+    const d = data.data;
 
-    try {
-      result.textContent = "Загрузка...";
+    result.innerHTML = `
+      <div>За холд:</div>
+      <div class="amount">${formatAmount(d.hold)} BARTR</div>
 
-      const response = await fetch(
-        `${PROXY_URL}?address=${encodeURIComponent(address)}`
-      );
+      <div style="margin-top:10px;">За партнёров:</div>
+      <div class="amount">${formatAmount(d.partner)} BARTR</div>
 
-      const data = await response.json();
+      <div style="margin-top:10px;">Всего:</div>
+      <div class="amount">${formatAmount(d.total)} BARTR</div>
+    `;
 
-      if (!response.ok) {
-        result.innerHTML = `
-          <span class="error">Ошибка ответа.</span>
-          <pre>${JSON.stringify(data, null, 2)}</pre>
-        `;
-        return;
-      }
-
-      const income = data.data || {};
-
-      result.innerHTML = `
-        <div>За холд:</div>
-        <div class="amount">${formatAmount(income.hold, 6)} BARTR</div>
-
-        <div style="margin-top: 12px;">За партнёров:</div>
-        <div class="amount">${formatAmount(income.partner, 6)} BARTR</div>
-
-        <div style="margin-top: 12px;">Всего:</div>
-        <div class="amount">${formatAmount(income.total, 6)} BARTR</div>
-      `;
-    } catch (e) {
-      result.innerHTML = `<span class="error">Ошибка запроса.</span>`;
-    }
+  } catch(e) {
+    result.innerHTML = "Ошибка запроса";
   }
+}
 </script>
-  </script>
+
 </body>
 </html>
