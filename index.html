@@ -18,9 +18,7 @@
       --danger: #ff9f9f;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -94,9 +92,7 @@
       padding-left: 22px;
     }
 
-    li {
-      margin: 8px 0;
-    }
+    li { margin: 8px 0; }
 
     .sign-box {
       margin-top: 14px;
@@ -138,9 +134,7 @@
       font-size: 15px;
     }
 
-    input::placeholder {
-      color: var(--muted);
-    }
+    input::placeholder { color: var(--muted); }
 
     .qr-wrap {
       margin-top: 18px;
@@ -188,6 +182,12 @@
       color: var(--success);
     }
 
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: var(--muted);
+    }
+
     footer {
       margin-top: 22px;
       text-align: center;
@@ -208,7 +208,6 @@
     </section>
 
     <section class="grid">
-
       <div class="card">
         <h2>Проверить начисления BARTR</h2>
 
@@ -290,7 +289,6 @@
           После успешного подтверждения BARTR будет зачислен на ваш кошелёк.
         </p>
       </div>
-
     </section>
 
     <footer>
@@ -299,15 +297,10 @@
   </main>
 
   <script>
-    const LCD_URL = "http://api-docs.axiomeinfo.org:1317";
-    const CONTRACT = "axm1xcw72vdrmd76d3krjfwgc2pcx5z9ccywmnkdzxajfclav8lhvytq45n7dl";
-
-    function toBase64(obj) {
-      return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
-    }
+    const PROXY_URL = "https://lucky-morning-47de.bazer-postman.workers.dev/";
 
     function formatAmount(rawAmount, decimals = 6) {
-      if (!rawAmount) return "0";
+      if (rawAmount === undefined || rawAmount === null || rawAmount === "") return "0";
 
       const value = BigInt(String(rawAmount));
       const divider = 10n ** BigInt(decimals);
@@ -321,6 +314,22 @@
         .replace(/0+$/, "");
 
       return fractionText ? `${whole}.${fractionText}` : whole.toString();
+    }
+
+    function findAmount(obj) {
+      if (!obj || typeof obj !== "object") return null;
+
+      const data = obj.data || obj;
+
+      return (
+        data.amount ??
+        data.income ??
+        data.reward ??
+        data.pending ??
+        data.claimable ??
+        data.balance ??
+        null
+      );
     }
 
     async function copySign() {
@@ -351,65 +360,42 @@
         return;
       }
 
-      const query = {
-        income: {
-          address: address
-        }
-      };
-
-      const queryBase64 = encodeURIComponent(toBase64(query));
-      const url = `${LCD_URL}/cosmwasm/wasm/v1/contract/${CONTRACT}/smart/${queryBase64}`;
-
       try {
         result.textContent = "Загрузка...";
 
-        const response = await fetch(url, {
-          method: "GET",
-          headers: {
-            "accept": "application/json"
-          }
-        });
+        const response = await fetch(
+          `${PROXY_URL}?address=${encodeURIComponent(address)}`
+        );
 
         const data = await response.json();
 
         if (!response.ok) {
-          result.innerHTML = `<span class="error">Ошибка ответа LCD.</span><br><pre>${JSON.stringify(data, null, 2)}</pre>`;
+          result.innerHTML = `
+            <span class="error">Ошибка ответа.</span>
+            <pre>${JSON.stringify(data, null, 2)}</pre>
+          `;
           return;
         }
 
-        const incomeData = data.data || data;
+        const rawAmount = findAmount(data);
 
-        const possibleAmount =
-          incomeData.amount ||
-          incomeData.income ||
-          incomeData.reward ||
-          incomeData.pending ||
-          incomeData.claimable ||
-          incomeData.balance;
-
-        if (possibleAmount !== undefined && possibleAmount !== null) {
-          const formatted = formatAmount(possibleAmount, 6);
-
+        if (rawAmount !== null) {
           result.innerHTML = `
             <div>Доступно к получению:</div>
-            <div class="amount">${formatted} BARTR</div>
+            <div class="amount">${formatAmount(rawAmount, 6)} BARTR</div>
           `;
           return;
         }
 
         result.innerHTML = `
           <div class="success">Ответ получен:</div>
-          <pre>${JSON.stringify(incomeData, null, 2)}</pre>
+          <pre>${JSON.stringify(data, null, 2)}</pre>
         `;
-
       } catch (e) {
         result.innerHTML = `
           <span class="error">Ошибка запроса.</span>
-          <div class="note">
-            Если через curl работает, а на сайте нет — скорее всего LCD блокирует запрос из браузера из-за CORS.
-          </div>
+          <div class="note">Проверь Worker URL и ответ по прямой ссылке.</div>
         `;
-        console.error(e);
       }
     }
   </script>
