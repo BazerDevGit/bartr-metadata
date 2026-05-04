@@ -14,9 +14,13 @@
       --accent: #7aa2ff;
       --accent2: #45d6a3;
       --border: rgba(255,255,255,.12);
+      --success: #9ff4cf;
+      --danger: #ff9f9f;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
@@ -26,6 +30,7 @@
         radial-gradient(circle at bottom right, rgba(69,214,163,.18), transparent 28%),
         var(--bg);
       color: var(--text);
+      line-height: 1.6;
     }
 
     .wrap {
@@ -39,12 +44,40 @@
       border: 1px solid var(--border);
       border-radius: 28px;
       background: rgba(18, 26, 51, .82);
+      box-shadow: 0 22px 70px rgba(0,0,0,.28);
     }
 
-    h1 { margin: 0 0 12px; }
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(122,162,255,.16);
+      color: #dbe5ff;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(30px, 5vw, 52px);
+      line-height: 1.08;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      max-width: 720px;
+    }
 
     .grid {
       display: grid;
+      grid-template-columns: 1fr;
       gap: 18px;
       margin-top: 22px;
     }
@@ -56,12 +89,32 @@
       background: rgba(18, 26, 51, .74);
     }
 
-    input {
-      width: 100%;
-      padding: 12px;
-      border-radius: 12px;
-      border: none;
-      margin-top: 10px;
+    ol, ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin: 8px 0;
+    }
+
+    .sign-box {
+      margin-top: 14px;
+      padding: 14px;
+      border: 1px dashed rgba(122,162,255,.45);
+      border-radius: 18px;
+      background: rgba(0,0,0,.22);
+      word-break: break-all;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      color: #dbe5ff;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 14px;
     }
 
     button {
@@ -72,68 +125,216 @@
       font-weight: 700;
       color: #081021;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      outline: none;
+      color: var(--text);
+      background: rgba(0,0,0,.22);
+      font-size: 15px;
+    }
+
+    input::placeholder {
+      color: var(--muted);
+    }
+
+    .qr-wrap {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .qr-img {
+      width: min(260px, 100%);
+      padding: 12px;
+      border-radius: 22px;
+      background: #fff;
+      box-shadow: 0 18px 45px rgba(0,0,0,.28);
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 14px;
       margin-top: 10px;
     }
 
-    .sign-box {
+    .success {
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .error {
+      color: var(--danger);
+      font-weight: 700;
+    }
+
+    .result-box {
       margin-top: 14px;
-      padding: 14px;
+      padding: 16px;
       border-radius: 18px;
       background: rgba(0,0,0,.22);
-      font-size: 12px;
-      word-break: break-all;
+      border: 1px solid var(--border);
+      min-height: 56px;
+      word-break: break-word;
     }
 
-    pre {
-      margin-top: 10px;
-      white-space: pre-wrap;
-      color: #9ff4cf;
+    .amount {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--success);
+    }
+
+    footer {
+      margin-top: 22px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
     }
   </style>
 </head>
 
 <body>
   <main class="wrap">
-
     <section class="hero">
-      <h1>💰 Награды BARTR</h1>
-      <p>Получите или проверьте свои начисления</p>
+      <div class="badge">BARTR Rewards</div>
+      <h1>Как получить награды BARTR</h1>
+      <p class="lead">
+        Здесь можно проверить начисления BARTR и забрать награду через Axiome Wallet.
+      </p>
     </section>
 
     <section class="grid">
 
       <div class="card">
-        <h2>Claim</h2>
+        <h2>Проверить начисления BARTR</h2>
 
-        <div class="sign-box" id="signText">
-axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImNvbnRyYWN0X2FkZHIiOiJheG0xeGN3NzJ2ZHJtZDc2ZDNrcmpmd2djMnBjeDV6OWNjeXdtbmtkenhhamZjbGF2OGxodnl0cTQ1bjdkbCIsImZ1bmRzIjpbXSwibXNnIjp7ImNsYWltIjp7fX0sIm1lbW8iOiJjbGFpbSBCQVJUUiBmcm9tIGRpc3RyaWJ1dG9yIn0=
+        <p class="note">
+          Введите свой AXM-адрес, чтобы посмотреть доступные начисления.
+        </p>
+
+        <input
+          id="address"
+          placeholder="Например: axm153wetpldgkglhqnuuur0peexg5pg0fvm0jfk3v"
+        />
+
+        <div class="btn-row">
+          <button onclick="checkIncome()">Проверить начисления</button>
         </div>
 
-        <button onclick="copySign()">Скопировать</button>
-        <div id="copyStatus"></div>
+        <div class="result-box" id="result">
+          Результат появится здесь.
+        </div>
       </div>
 
       <div class="card">
-        <h2>Проверить начисления</h2>
+        <h2>Способ 1: через строку подписи</h2>
 
-        <input id="address" placeholder="axm..." />
-        <button onclick="checkIncome()">Проверить</button>
+        <ol>
+          <li>Откройте приложение <b>Axiome Wallet</b>.</li>
+          <li>Перейдите в раздел <b>Axiome Connect</b>.</li>
+          <li>Вставьте строку подписи в поле ввода.</li>
+          <li>Подтвердите транзакцию.</li>
+        </ol>
 
-        <pre id="result"></pre>
+        <div class="sign-box" id="signText">axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImNvbnRyYWN0X2FkZHIiOiJheG0xeGN3NzJ2ZHJtZDc2ZDNrcmpmd2djMnBjeDV6OWNjeXdtbmtkenhhamZjbGF2OGxodnl0cTQ1bjdkbCIsImZ1bmRzIjpbXSwibXNnIjp7ImNsYWltIjp7fX0sIm1lbW8iOiJjbGFpbSBCQVJUUiBmcm9tIGRpc3RyaWJ1dG9yIn0=</div>
+
+        <div class="btn-row">
+          <button onclick="copySign()">Скопировать строку</button>
+        </div>
+
+        <div class="note" id="copyStatus"></div>
+      </div>
+
+      <div class="card">
+        <h2>Способ 2: через QR-код</h2>
+
+        <ol>
+          <li>Откройте <b>Axiome Wallet</b>.</li>
+          <li>Перейдите в <b>Axiome Connect</b>.</li>
+          <li>Отсканируйте QR-код ниже.</li>
+          <li>Подтвердите транзакцию.</li>
+        </ol>
+
+        <div class="qr-wrap">
+          <img class="qr-img" src="claim.jpg" alt="QR-код для получения награды BARTR" />
+        </div>
+
+        <p class="note">
+          Важно: файл картинки должен лежать рядом с этим HTML и называться <b>claim.jpg</b>.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Важно</h2>
+
+        <ul>
+          <li>Для комиссии нужен небольшой баланс AXM.</li>
+          <li>Награда приходит после подтверждения транзакции.</li>
+          <li>Если награда не пришла, проверьте, есть ли у вас доступные начисления.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Что происходит при подтверждении?</h2>
+
+        <p>
+          Вы отправляете транзакцию <b>claim</b> в смарт-контракт распределения BARTR.
+          Контракт проверяет вашу доступную награду и отправляет токены на ваш адрес.
+        </p>
+
+        <p class="success">
+          После успешного подтверждения BARTR будет зачислен на ваш кошелёк.
+        </p>
       </div>
 
     </section>
 
+    <footer>
+      BARTR Claim Guide · Axiome Wallet
+    </footer>
   </main>
 
   <script>
-    const LCD_URL = "https://ТВОЙ_LCD_ENDPOINT"; // ← ВСТАВЬ СЮДА
+    const LCD_URL = "http://api-docs.axiomeinfo.org:1317";
     const CONTRACT = "axm1xcw72vdrmd76d3krjfwgc2pcx5z9ccywmnkdzxajfclav8lhvytq45n7dl";
 
+    function toBase64(obj) {
+      return btoa(unescape(encodeURIComponent(JSON.stringify(obj))));
+    }
+
+    function formatAmount(rawAmount, decimals = 6) {
+      if (!rawAmount) return "0";
+
+      const value = BigInt(String(rawAmount));
+      const divider = 10n ** BigInt(decimals);
+
+      const whole = value / divider;
+      const fraction = value % divider;
+
+      const fractionText = fraction
+        .toString()
+        .padStart(decimals, "0")
+        .replace(/0+$/, "");
+
+      return fractionText ? `${whole}.${fractionText}` : whole.toString();
+    }
+
     async function copySign() {
-      const text = document.getElementById('signText').innerText;
-      await navigator.clipboard.writeText(text);
-      document.getElementById('copyStatus').innerText = "Скопировано";
+      const text = document.getElementById("signText").innerText.trim();
+      const status = document.getElementById("copyStatus");
+
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = "Строка скопирована.";
+        status.className = "note success";
+      } catch (e) {
+        status.textContent = "Не удалось скопировать автоматически. Выделите строку вручную.";
+        status.className = "note error";
+      }
     }
 
     async function checkIncome() {
@@ -141,32 +342,76 @@ axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImN
       const result = document.getElementById("result");
 
       if (!address) {
-        result.textContent = "Введите адрес";
+        result.innerHTML = '<span class="error">Введите AXM-адрес.</span>';
+        return;
+      }
+
+      if (!address.startsWith("axm")) {
+        result.innerHTML = '<span class="error">Адрес должен начинаться с axm.</span>';
         return;
       }
 
       const query = {
-        income: { address }
+        income: {
+          address: address
+        }
       };
 
-      const queryBase64 = btoa(JSON.stringify(query));
+      const queryBase64 = encodeURIComponent(toBase64(query));
+      const url = `${LCD_URL}/cosmwasm/wasm/v1/contract/${CONTRACT}/smart/${queryBase64}`;
 
       try {
         result.textContent = "Загрузка...";
 
-        const res = await fetch(
-          `${LCD_URL}/cosmwasm/wasm/v1/contract/${CONTRACT}/smart/${queryBase64}`
-        );
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "accept": "application/json"
+          }
+        });
 
-        const data = await res.json();
+        const data = await response.json();
 
-        result.textContent = JSON.stringify(data, null, 2);
+        if (!response.ok) {
+          result.innerHTML = `<span class="error">Ошибка ответа LCD.</span><br><pre>${JSON.stringify(data, null, 2)}</pre>`;
+          return;
+        }
+
+        const incomeData = data.data || data;
+
+        const possibleAmount =
+          incomeData.amount ||
+          incomeData.income ||
+          incomeData.reward ||
+          incomeData.pending ||
+          incomeData.claimable ||
+          incomeData.balance;
+
+        if (possibleAmount !== undefined && possibleAmount !== null) {
+          const formatted = formatAmount(possibleAmount, 6);
+
+          result.innerHTML = `
+            <div>Доступно к получению:</div>
+            <div class="amount">${formatted} BARTR</div>
+          `;
+          return;
+        }
+
+        result.innerHTML = `
+          <div class="success">Ответ получен:</div>
+          <pre>${JSON.stringify(incomeData, null, 2)}</pre>
+        `;
 
       } catch (e) {
-        result.textContent = "Ошибка запроса";
+        result.innerHTML = `
+          <span class="error">Ошибка запроса.</span>
+          <div class="note">
+            Если через curl работает, а на сайте нет — скорее всего LCD блокирует запрос из браузера из-за CORS.
+          </div>
+        `;
+        console.error(e);
       }
     }
   </script>
-
 </body>
 </html>
