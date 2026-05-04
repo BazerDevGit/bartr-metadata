@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Как получить награды BARTR</title>
+
   <style>
     :root {
       --bg: #0b1020;
@@ -25,7 +26,6 @@
         radial-gradient(circle at bottom right, rgba(69,214,163,.18), transparent 28%),
         var(--bg);
       color: var(--text);
-      line-height: 1.6;
     }
 
     .wrap {
@@ -39,36 +39,12 @@
       border: 1px solid var(--border);
       border-radius: 28px;
       background: rgba(18, 26, 51, .82);
-      box-shadow: 0 22px 70px rgba(0,0,0,.28);
-      backdrop-filter: blur(14px);
     }
 
-    .badge {
-      display: inline-block;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: rgba(122,162,255,.16);
-      color: #dbe5ff;
-      font-size: 14px;
-      margin-bottom: 14px;
-    }
-
-    h1 {
-      margin: 0 0 12px;
-      font-size: clamp(30px, 5vw, 52px);
-      line-height: 1.08;
-    }
-
-    .lead {
-      margin: 0;
-      color: var(--muted);
-      font-size: 18px;
-      max-width: 720px;
-    }
+    h1 { margin: 0 0 12px; }
 
     .grid {
       display: grid;
-      grid-template-columns: 1fr;
       gap: 18px;
       margin-top: 22px;
     }
@@ -80,35 +56,12 @@
       background: rgba(18, 26, 51, .74);
     }
 
-    h2 {
-      margin: 0 0 14px;
-      font-size: 24px;
-    }
-
-    ol, ul {
-      margin: 0;
-      padding-left: 22px;
-    }
-
-    li { margin: 8px 0; }
-
-    .sign-box {
-      margin-top: 14px;
-      padding: 14px;
-      border: 1px dashed rgba(122,162,255,.45);
-      border-radius: 18px;
-      background: rgba(0,0,0,.22);
-      word-break: break-all;
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 13px;
-      color: #dbe5ff;
-    }
-
-    .btn-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 14px;
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      margin-top: 10px;
     }
 
     button {
@@ -119,120 +72,101 @@
       font-weight: 700;
       color: #081021;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-    }
-
-    .qr-wrap {
-      margin-top: 18px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .qr-img {
-      width: min(260px, 100%);
-      padding: 12px;
-      border-radius: 22px;
-      background: #fff;
-      box-shadow: 0 18px 45px rgba(0,0,0,.28);
-    }
-
-    .note {
-      color: var(--muted);
-      font-size: 14px;
       margin-top: 10px;
     }
 
-    .success {
-      color: #9ff4cf;
-      font-weight: 700;
+    .sign-box {
+      margin-top: 14px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(0,0,0,.22);
+      font-size: 12px;
+      word-break: break-all;
     }
 
-    footer {
-      margin-top: 22px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
+    pre {
+      margin-top: 10px;
+      white-space: pre-wrap;
+      color: #9ff4cf;
     }
   </style>
 </head>
+
 <body>
   <main class="wrap">
+
     <section class="hero">
-      <div class="badge">BARTR Rewards</div>
-      <h1>Как получить награды BARTR</h1>
-      <p class="lead">
-        Вы можете забрать свои награды BARTR через приложение Axiome Wallet.
-        Ниже есть два способа: через строку подписи или через QR-код.
-      </p>
+      <h1>💰 Награды BARTR</h1>
+      <p>Получите или проверьте свои начисления</p>
     </section>
 
     <section class="grid">
+
       <div class="card">
-        <h2>Способ 1: через строку подписи</h2>
-        <ol>
-          <li>Откройте приложение <b>Axiome Wallet</b>.</li>
-          <li>Перейдите в раздел <b>Axiome Connect</b>.</li>
-          <li>Вставьте строку подписи в поле ввода.</li>
-          <li>Подтвердите транзакцию.</li>
-        </ol>
+        <h2>Claim</h2>
 
-        <div class="sign-box" id="signText">axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImNvbnRyYWN0X2FkZHIiOiJheG0xeGN3NzJ2ZHJtZDc2ZDNrcmpmd2djMnBjeDV6OWNjeXdtbmtkenhhamZjbGF2OGxodnl0cTQ1bjdkbCIsImZ1bmRzIjpbXSwibXNnIjp7ImNsYWltIjp7fX0sIm1lbW8iOiJjbGFpbSBCQVJUUiBmcm9tIGRpc3RyaWJ1dG9yIn0=</div>
-
-        <div class="btn-row">
-          <button onclick="copySign()">Скопировать строку</button>
+        <div class="sign-box" id="signText">
+axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImNvbnRyYWN0X2FkZHIiOiJheG0xeGN3NzJ2ZHJtZDc2ZDNrcmpmd2djMnBjeDV6OWNjeXdtbmtkenhhamZjbGF2OGxodnl0cTQ1bjdkbCIsImZ1bmRzIjpbXSwibXNnIjp7ImNsYWltIjp7fX0sIm1lbW8iOiJjbGFpbSBCQVJUUiBmcm9tIGRpc3RyaWJ1dG9yIn0=
         </div>
 
-        <div class="note" id="copyStatus"></div>
+        <button onclick="copySign()">Скопировать</button>
+        <div id="copyStatus"></div>
       </div>
 
       <div class="card">
-        <h2>Способ 2: через QR-код</h2>
-        <ol>
-          <li>Откройте <b>Axiome Wallet</b>.</li>
-          <li>Перейдите в <b>Axiome Connect</b>.</li>
-          <li>Отсканируйте QR-код ниже.</li>
-        </ol>
+        <h2>Проверить начисления</h2>
 
-        <div class="qr-wrap">
-          <img class="qr-img" src="claim.jpg" alt="QR-код для получения награды BARTR" />
-        </div>
+        <input id="address" placeholder="axm..." />
+        <button onclick="checkIncome()">Проверить</button>
+
+        <pre id="result"></pre>
       </div>
 
-      <div class="card">
-        <h2>Важно</h2>
-        <ul>
-          <li>Для комиссии нужен небольшой баланс AXM.</li>
-          <li>Награда приходит после подтверждения транзакции.</li>
-          <li>Если награда не пришла, проверьте, есть ли доступные начисления.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Что происходит при подтверждении?</h2>
-        <p>
-          Вы отправляете транзакцию <b>claim</b> в смарт-контракт распределения BARTR.
-          Контракт проверяет вашу доступную награду и отправляет токены на ваш адрес.
-        </p>
-        <p class="success">После успешного подтверждения BARTR будет зачислен на ваш кошелёк.</p>
-      </div>
     </section>
 
-    <footer>
-      BARTR Claim Guide · Axiome Wallet
-    </footer>
   </main>
 
   <script>
+    const LCD_URL = "http://api-docs.axiomeinfo.org:1317"; // ← ВСТАВЬ СЮДА
+    const CONTRACT = "axm1xcw72vdrmd76d3krjfwgc2pcx5z9ccywmnkdzxajfclav8lhvytq45n7dl";
+
     async function copySign() {
       const text = document.getElementById('signText').innerText;
-      const status = document.getElementById('copyStatus');
+      await navigator.clipboard.writeText(text);
+      document.getElementById('copyStatus').innerText = "Скопировано";
+    }
+
+    async function checkIncome() {
+      const address = document.getElementById("address").value.trim();
+      const result = document.getElementById("result");
+
+      if (!address) {
+        result.textContent = "Введите адрес";
+        return;
+      }
+
+      const query = {
+        income: { address }
+      };
+
+      const queryBase64 = btoa(JSON.stringify(query));
 
       try {
-        await navigator.clipboard.writeText(text);
-        status.textContent = 'Строка скопирована.';
+        result.textContent = "Загрузка...";
+
+        const res = await fetch(
+          `${LCD_URL}/cosmwasm/wasm/v1/contract/${CONTRACT}/smart/${queryBase64}`
+        );
+
+        const data = await res.json();
+
+        result.textContent = JSON.stringify(data, null, 2);
+
       } catch (e) {
-        status.textContent = 'Не удалось скопировать автоматически. Выделите строку вручную.';
+        result.textContent = "Ошибка запроса";
       }
     }
   </script>
+
 </body>
 </html>
