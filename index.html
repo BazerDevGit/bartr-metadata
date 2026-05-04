@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BARTR Rewards</title>
+  <title>Как получить награды BARTR</title>
 
   <style>
     :root {
@@ -28,28 +28,64 @@
         radial-gradient(circle at bottom right, rgba(69,214,163,.18), transparent 28%),
         var(--bg);
       color: var(--text);
+      line-height: 1.6;
     }
 
     .wrap {
-      width: min(900px, 100%);
-      margin: auto;
-      padding: 30px 16px;
+      width: min(920px, 100%);
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    .hero {
+      padding: 34px 24px;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      background: rgba(18, 26, 51, .82);
+      box-shadow: 0 22px 70px rgba(0,0,0,.28);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(122,162,255,.16);
+      color: #dbe5ff;
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+
+    h1 { margin: 0 0 12px; font-size: clamp(30px, 5vw, 52px); }
+    h2 { margin: 0 0 14px; font-size: 24px; }
+
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
     }
 
     .card {
       padding: 22px;
       border: 1px solid var(--border);
-      border-radius: 20px;
-      background: rgba(18,26,51,.8);
-      margin-bottom: 16px;
+      border-radius: 24px;
+      background: rgba(18, 26, 51, .74);
     }
 
-    h1 { margin: 0 0 10px; }
-    h2 { margin: 0 0 10px; }
+    ol, ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+
+    li { margin: 8px 0; }
 
     input {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border-radius: 12px;
       border: none;
       margin-top: 10px;
@@ -58,12 +94,29 @@
     button {
       margin-top: 10px;
       padding: 12px;
-      border: none;
       border-radius: 12px;
+      border: none;
       font-weight: bold;
       cursor: pointer;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      color: #000;
+    }
+
+    .sign-box {
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 12px;
+      background: rgba(0,0,0,.3);
+      border-radius: 10px;
+      word-break: break-all;
+    }
+
+    .qr-img {
+      width: 240px;
+      display: block;
+      margin: 20px auto;
+      background: #fff;
+      padding: 10px;
+      border-radius: 20px;
     }
 
     .amount {
@@ -72,108 +125,118 @@
       color: var(--success);
     }
 
-    .result {
-      margin-top: 10px;
-    }
+    .note { color: var(--muted); }
 
-    .qr {
-      width: 220px;
-      display: block;
-      margin: 20px auto;
-      background: #fff;
-      padding: 10px;
-      border-radius: 16px;
-    }
-
-    .sign {
-      font-size: 12px;
-      word-break: break-all;
-      background: rgba(0,0,0,.3);
-      padding: 10px;
-      border-radius: 10px;
-    }
   </style>
 </head>
 
 <body>
+  <main class="wrap">
 
-<div class="wrap">
+    <section class="hero">
+      <div class="badge">BARTR Rewards</div>
+      <h1>Как получить награды BARTR</h1>
+      <p class="lead">
+        Вы можете проверить начисления BARTR и забрать награды через Axiome Wallet.
+      </p>
+    </section>
 
-  <div class="card">
-    <h1>💰 BARTR награды</h1>
-    <p>Проверь начисления и забери награду</p>
-  </div>
+    <section class="grid">
 
-  <div class="card">
-    <h2>Проверить начисления</h2>
+      <!-- 🔥 НОВЫЙ БЛОК -->
+      <div class="card">
+        <h2>Проверить начисления BARTR</h2>
 
-    <input id="address" placeholder="axm..." />
-    <button onclick="checkIncome()">Проверить</button>
+        <p class="note">
+          Введите свой AXM-адрес, чтобы посмотреть начисления.
+        </p>
 
-    <div id="result" class="result"></div>
-  </div>
+        <input id="address" placeholder="axm..." />
+        <button onclick="checkIncome()">Проверить</button>
 
-  <div class="card">
-    <h2>QR Claim</h2>
-    <img src="claim.jpg" class="qr" />
-  </div>
+        <div id="result" style="margin-top:10px;"></div>
+      </div>
 
-  <div class="card">
-    <h2>Строка Claim</h2>
+      <!-- СТАРЫЙ ТЕКСТ -->
+      <div class="card">
+        <h2>Способ 1: через строку подписи</h2>
 
-    <div id="signText" class="sign">
+        <ol>
+          <li>Откройте приложение <b>Axiome Wallet</b>.</li>
+          <li>Перейдите в раздел <b>Axiome Connect</b>.</li>
+          <li>Вставьте строку подписи ниже.</li>
+          <li>Подтвердите транзакцию.</li>
+        </ol>
+
+        <div id="signText" class="sign-box">
 axiomesign://eyJ0eXBlIjoiY29zbXdhc21fZXhlY3V0ZSIsIm5ldHdvcmsiOiJheGlvbWUtMSIsImNvbnRyYWN0X2FkZHIiOiJheG0xeGN3NzJ2ZHJtZDc2ZDNrcmpmd2djMnBjeDV6OWNjeXdtbmtkenhhamZjbGF2OGxodnl0cTQ1bjdkbCIsImZ1bmRzIjpbXSwibXNnIjp7ImNsYWltIjp7fX0sIm1lbW8iOiJjbGFpbSBCQVJUUiBmcm9tIGRpc3RyaWJ1dG9yIn0=
-    </div>
+        </div>
 
-    <button onclick="copySign()">Скопировать</button>
-  </div>
+        <button onclick="copySign()">Скопировать строку</button>
+      </div>
 
-</div>
+      <div class="card">
+        <h2>Способ 2: через QR-код</h2>
+
+        <ol>
+          <li>Откройте <b>Axiome Wallet</b>.</li>
+          <li>Перейдите в <b>Axiome Connect</b>.</li>
+          <li>Отсканируйте QR-код ниже.</li>
+          <li>Подтвердите транзакцию.</li>
+        </ol>
+
+        <img src="claim.jpg" class="qr-img" />
+
+        <p class="note">
+          Файл QR должен называться <b>claim.jpg</b> и лежать рядом с HTML.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
 
 <script>
 const PROXY_URL = "https://lucky-morning-47de.bazer-postman.workers.dev/";
 
-function formatAmount(v) {
-  if (!v) return "0";
-  return (Number(v) / 1e6).toFixed(6).replace(/\.?0+$/, "");
+function format(v){
+  return (Number(v||0)/1e6).toFixed(6).replace(/\.?0+$/,"");
 }
 
-async function copySign() {
-  const text = document.getElementById("signText").innerText.trim();
-  await navigator.clipboard.writeText(text);
+async function copySign(){
+  const t=document.getElementById("signText").innerText;
+  await navigator.clipboard.writeText(t);
   alert("Скопировано");
 }
 
-async function checkIncome() {
-  const address = document.getElementById("address").value.trim();
-  const result = document.getElementById("result");
+async function checkIncome(){
+  const addr=document.getElementById("address").value.trim();
+  const el=document.getElementById("result");
 
-  if (!address) {
-    result.innerHTML = "Введите адрес";
+  if(!addr){
+    el.innerHTML="Введите адрес";
     return;
   }
 
-  result.innerHTML = "Загрузка...";
+  el.innerHTML="Загрузка...";
 
-  try {
-    const res = await fetch(PROXY_URL + "?address=" + address);
-    const data = await res.json();
+  try{
+    const r=await fetch(PROXY_URL+"?address="+addr);
+    const d=await r.json();
+    const x=d.data||{};
 
-    const d = data.data;
-
-    result.innerHTML = `
+    el.innerHTML=`
       <div>За холд:</div>
-      <div class="amount">${formatAmount(d.hold)} BARTR</div>
+      <div class="amount">${format(x.hold)} BARTR</div>
 
       <div style="margin-top:10px;">За партнёров:</div>
-      <div class="amount">${formatAmount(d.partner)} BARTR</div>
+      <div class="amount">${format(x.partner)} BARTR</div>
 
       <div style="margin-top:10px;">Всего:</div>
-      <div class="amount">${formatAmount(d.total)} BARTR</div>
+      <div class="amount">${format(x.total)} BARTR</div>
     `;
-
-  } catch(e) {
-    result.innerHTML = "Ошибка запроса";
+  }catch(e){
+    el.innerHTML="Ошибка запроса";
   }
 }
 </script>
