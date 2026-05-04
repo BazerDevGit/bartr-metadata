@@ -346,58 +346,74 @@
       }
     }
 
-    async function checkIncome() {
-      const address = document.getElementById("address").value.trim();
-      const result = document.getElementById("result");
+    <script>
+  const PROXY_URL = "https://lucky-morning-47de.bazer-postman.workers.dev/";
 
-      if (!address) {
-        result.innerHTML = '<span class="error">Введите AXM-адрес.</span>';
-        return;
-      }
+  function formatAmount(rawAmount, decimals = 6) {
+    if (!rawAmount) return "0";
 
-      if (!address.startsWith("axm")) {
-        result.innerHTML = '<span class="error">Адрес должен начинаться с axm.</span>';
-        return;
-      }
+    const value = BigInt(String(rawAmount));
+    const divider = 10n ** BigInt(decimals);
 
-      try {
-        result.textContent = "Загрузка...";
+    const whole = value / divider;
+    const fraction = value % divider;
 
-        const response = await fetch(
-          `${PROXY_URL}?address=${encodeURIComponent(address)}`
-        );
+    const fractionText = fraction
+      .toString()
+      .padStart(decimals, "0")
+      .replace(/0+$/, "");
 
-        const data = await response.json();
+    return fractionText ? `${whole}.${fractionText}` : whole.toString();
+  }
 
-        if (!response.ok) {
-          result.innerHTML = `
-            <span class="error">Ошибка ответа.</span>
-            <pre>${JSON.stringify(data, null, 2)}</pre>
-          `;
-          return;
-        }
+  async function checkIncome() {
+    const address = document.getElementById("address").value.trim();
+    const result = document.getElementById("result");
 
-        const rawAmount = findAmount(data);
+    if (!address) {
+      result.innerHTML = '<span class="error">Введите AXM-адрес.</span>';
+      return;
+    }
 
-        if (rawAmount !== null) {
-          result.innerHTML = `
-            <div>Доступно к получению:</div>
-            <div class="amount">${formatAmount(rawAmount, 6)} BARTR</div>
-          `;
-          return;
-        }
+    if (!address.startsWith("axm")) {
+      result.innerHTML = '<span class="error">Адрес должен начинаться с axm.</span>';
+      return;
+    }
 
+    try {
+      result.textContent = "Загрузка...";
+
+      const response = await fetch(
+        `${PROXY_URL}?address=${encodeURIComponent(address)}`
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
         result.innerHTML = `
-          <div class="success">Ответ получен:</div>
+          <span class="error">Ошибка ответа.</span>
           <pre>${JSON.stringify(data, null, 2)}</pre>
         `;
-      } catch (e) {
-        result.innerHTML = `
-          <span class="error">Ошибка запроса.</span>
-          <div class="note">Проверь Worker URL и ответ по прямой ссылке.</div>
-        `;
+        return;
       }
+
+      const income = data.data || {};
+
+      result.innerHTML = `
+        <div>За холд:</div>
+        <div class="amount">${formatAmount(income.hold, 6)} BARTR</div>
+
+        <div style="margin-top: 12px;">За партнёров:</div>
+        <div class="amount">${formatAmount(income.partner, 6)} BARTR</div>
+
+        <div style="margin-top: 12px;">Всего:</div>
+        <div class="amount">${formatAmount(income.total, 6)} BARTR</div>
+      `;
+    } catch (e) {
+      result.innerHTML = `<span class="error">Ошибка запроса.</span>`;
     }
+  }
+</script>
   </script>
 </body>
 </html>
